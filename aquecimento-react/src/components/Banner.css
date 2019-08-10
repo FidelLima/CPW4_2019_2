@@ -1,0 +1,39 @@
+.banner{
+    background-color: #181D27;
+    padding: 20px 0px 10px 20px;
+}
+
+#titulo{
+font-size:130%;
+font-weight: bold;
+margin-right: 10px;
+}
+#titulo a{
+    color: white;
+    text-decoration: none;
+}
+
+#titulo a:hover{
+    color:  #1E4947;
+}
+
+#menu{
+    list-style: none;
+    display: inline;
+}
+
+#menu li{
+    display: inline; /* pra nao ficar um embaixo do outro*/
+    margin-right: 20px;
+    padding-bottom: 3px;
+}
+
+#menu li:hover /*efeito au pasar o mause na letra */{
+    border-bottom: 3px  solid #1E4947;
+}
+
+#menu a{
+    text-decoration: none;
+    color: white;
+    font-size: 110%; /* aumenta o tamanho da letra */
+}
