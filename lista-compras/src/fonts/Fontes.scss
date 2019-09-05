@@ -1,10 +1,12 @@
-@font-face{
-    font-family: 'anton regu';
-    src:url(./Anton-Regular.ttf);
+@font-face {
+    font-family: 'item lista';
+    src: url(./IndieFlower-Regular.ttf);
 }
-@font-face{
-    font-family: 'cour regu';
-    src:url(./Courgette-Regular.ttf);
+
+@font-face {
+    font-family: 'principal';
+    src: url(./LexendDeca-Regular.ttf);
 }
-$fonte-principal:'anton regu';
-$fonte-lista:'cour regu';
+
+$fonte-lista: 'item lista';
+$fonte-principal: 'principal';

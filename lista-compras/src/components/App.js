@@ -4,20 +4,22 @@ import {
   Switch,
   Route
 } from 'react-router-dom';
+
 import './App.scss';
 import Listas from './lista/Listas';
 import Lista from './lista/Lista';
-class App extends Component {
+import CriarLista from './lista/CriarLista';
+
+export default class App extends Component {
   render() {
     return (
-     <BrowserRouter basename={process.env.PUBLIC_URL}>
-     <Switch>
-      <Route exact path="/" component={Listas} />
-      <Route exact path="/lista" component={Lista} />
-     </Switch>
-     </BrowserRouter>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
+        <Switch>
+          <Route exact path="/" component={Listas} />
+          <Route exact path="/lista" component={Lista} />
+          <Route exact path="/criarLista" component={CriarLista} />
+        </Switch>
+      </BrowserRouter>
     );
   }
 }
-
-export default App;

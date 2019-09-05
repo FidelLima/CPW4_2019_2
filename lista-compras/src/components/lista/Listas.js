@@ -1,32 +1,40 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import Menu from '../menu/Menu';
 import logo from '../../img/logo.png';
 import ListaService from '../../services/ListaService';
+import './Lista.scss';
+import adicionar from '../../img/adicionar.png';
 
-class Listas extends Component {
+export default class Listas extends Component {
 
     constructor() {
-        // toda vez que criar o constructor lembrar de invocar o construtor da classe component. mãe component na primeira linha de cod
-
+        /**
+         * Toda vez que criar um construtor
+         * em um componente React, lembre-se
+         * de invocar o construtor da classe
+         * mãe Component na primeira linha de
+         * código.
+         */
         super();
 
         this.state = {
             listas: []
         }
+
         this.service = new ListaService();
     }
 
-    componentDidMount() {
+    async componentDidMount() {
         const listas =
-            this.service.recuperarListas();
+            await this.service.recuperarListas();
         this.setState({ listas });
     }
-
 
     render() {
         const listas =
             this.state.listas.map(lista => (
-                <li key={lista._id}>{lista.nome}</li>
+                <div className="item" key={lista._id}>{lista.nome}</div>
             ));
 
         return (
@@ -34,22 +42,36 @@ class Listas extends Component {
                 <Menu
                     logo={logo}
                     paginaAnterior="/"
-                    titulo="Minhas Listas" />
-                <div className="container">
+                    titulo="Lista de Compras" />
+
+                <div className="conteiner">
                     <div>
-                        <h2>Minhas Listas</h2>
 
-                        <ul>
+                        {
+                            //Nesse cod o operador and(&&) atua como se fosse um operador de ligação entre a condição lógica e o codigo de apresentação a ser realizada
+                            !this.state.listas &&
+                            <h2>Minhas listas</h2>
+                        }
+
+                        {
+                            this.state.listas &&
+                            <p id="mensagemNenhumaLista">Cadastre já sua Lista de Compras</p>
+                        }
+
+                        <div id="listagem">
                             {listas}
+                        </div>
 
-                        </ul>
+                        <div id="areaBotao">
+                            <Link to="/criarLista">
+                                <div id="botaoNovaLista">
+                                    <img src={adicionar} alt="Nova lista" />
+                                </div>
+                            </Link>
+                        </div>
                     </div>
-
                 </div>
-
             </div>
         );
     }
 }
-
-export default Listas;
