@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import Menu from '../menu/Menu';
+
+import Menu from '../../components/menu/Menu';
 import logo from '../../img/logo.png';
 import ListaService from '../../services/ListaService';
 import './Lista.scss';
@@ -34,18 +35,18 @@ export default class Listas extends Component {
 
     render() {
         const listas =
-            this.state.listas.map(
-                lista => (
-                    <Link to={
+            this.state.listas.map(lista => (
+                <Link
+                    to={
                         {
                             pathname: rotas.LISTA,
                             state: { lista }
                         }
-                    } key={lista._id}>
+                    }
+                    key={lista._id}>
                     <div className="item">{lista.nome}</div>
-                    </Link>
-                ));
-
+                </Link>
+            ));
 
         return (
             <div>
@@ -58,22 +59,32 @@ export default class Listas extends Component {
                     <div>
 
                         {
-                            //Nesse cod o operador and(&&) atua como se fosse um operador de ligação entre a condição lógica e o codigo de apresentação a ser realizada
+                            /**
+                             * Neste trecho de código, 
+                             * o operador AND (&&) atua como
+                             * um operador de ligação entre a
+                             * condição lógica e o código de 
+                             * apresentação a ser renderizado.
+                             */
                             !this.state.listas &&
                             <h2>Minhas listas</h2>
                         }
 
                         {
                             this.state.listas &&
-                            <p id="mensagemNenhumaLista">Cadastre já sua Lista de Compras</p>
+                            <p id="mensagemNenhumaLista">
+                                Clique no botão abaixo
+                                para cadastrar uma nova
+                                lista!
+                            </p>
                         }
 
-                        <div id="listagem">
+                        <div className="listagem">
                             {listas}
                         </div>
 
                         <div id="areaBotao">
-                            <Link to="/criarLista">
+                            <Link to="/criarlista">
                                 <div id="botaoNovaLista">
                                     <img src={adicionar} alt="Nova lista" />
                                 </div>

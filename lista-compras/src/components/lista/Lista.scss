@@ -19,6 +19,7 @@
 
     #listagem {
         margin: 5px;
+        tex
 
         .item {
             text-align: center;
@@ -28,6 +29,10 @@
             padding: 25px;
             border-radius: 5px;
             margin-bottom: 20px;
+        }
+        a{
+            text-decoration: none;
+            color: $cor-titulo;
         }
     }
 

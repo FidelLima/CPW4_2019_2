@@ -1,19 +1,21 @@
 import React, { Component } from 'react';
 
-class Sobre extends Component {
+export default class Sobre extends Component {
     render() {
         return (
             <div>
                 <h3>Sobre</h3>
                 <p>
-                    Projeto desenvolvido com a blibioteca
-                <a target="_blanl" rel="noopener noreferrer" href="http://reactjs.org"> React</a>
+                    Este projeto foi desenvolvido com
+                    a biblioteca
+                     <a target="_blank" rel="noopener noreferrer" href="https://reactjs.org">React</a>.
                 </p>
-
-                <p>Exemplo de web4</p>
+                <p>
+                    Este exemplo foi criado em sala
+                    de aula na disciplina Construção
+                    de Páginas Web IV.
+                </p>
             </div>
         );
     }
 }
-
-export default Sobre;
