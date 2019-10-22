@@ -1,0 +1,17 @@
+@font-face{
+    font-family: 'titulo';
+    src:url(./Billabong.ttf)
+}
+
+@font-face{
+    font-family: 'principal';
+    src:url(./Billabong.ttf)
+}
+@font-face{
+    font-family: 'anime';
+    src:url(./Billabong.ttf)
+}
+
+$fonte-principal:'principal';
+$fonte-titulo:'titulo';
+$fonte-anime:'anime';

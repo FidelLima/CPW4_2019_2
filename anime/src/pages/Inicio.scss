@@ -1,0 +1,72 @@
+@import '../Cores.scss';
+@import '../../src/fonts/Fonts.scss';
+
+*{
+    background-color: #17191a;
+
+}
+.conteiner{
+   
+        #formNovaLista{
+            padding: 10px 0px 10px 0px;
+
+            
+            ::-webkit-input-placeholder {
+                color: white;
+             }
+            
+
+            input{
+                display: block;
+                margin: auto;
+                color: white;
+            
+                
+
+                &[type=text]{
+                    width: 80%;
+                    height: 2%;
+                    font-size: 100%;
+                    border: 1px solid grey;
+                    border-radius: 5px;
+                    margin-bottom: 10px;
+                    font-family: $fonte-principal;
+                    padding: 5px 5px;
+                }
+
+                &[type=submit]{
+                    width: 40%;
+                    padding: 5px;
+                    background: $cor-botao;
+                    color: grey;
+                    border-radius: 6px;
+                    font-size: 110%;
+                    font-family: $fonte-principal;
+                    
+                }
+            }
+
+            img{
+                width: 100px;
+                padding-top: 10px;
+              
+            }
+        } 
+}
+
+.icon{
+    padding: 0px 0px 2px 20px;  
+    float: left;   
+    width: 40vw;
+
+    .text{
+        color: white;
+        padding:5px 4px 5px 0px;
+    
+        width:140px;
+
+      
+
+    }
+}
+    
