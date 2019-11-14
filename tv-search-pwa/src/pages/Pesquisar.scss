@@ -1,0 +1,67 @@
+@import '../Cores.scss';
+@import '../fonts/Fontes.scss';
+
+#areaPesquisa{
+    margin: 50px 0px;
+    text-align: center;
+
+    #campoPesquisa{
+        width:50%;
+        height:30px;
+        text-align: center;
+        font-family: $fonte-padrao;
+        font-size: 100%;
+        border-radius:20px;
+        border: none;
+        outline: none;
+        box-shadow: 2px 2px 5px #dddddd, //sombra da barra de pesquisa lado de baicho e direta 
+            -1px -1px 3px #cccccc
+        ;
+    }
+}
+    #animacao{
+        margin: auto;
+        
+    }
+
+    #areaResultados{
+        margin: 0px 20px;
+
+        .serie{
+            display: inline-block;
+            width: calc(100% /3);
+
+            img,
+            span{
+                display: block;
+               
+            }
+            img{
+                margin: auto;
+                width: 50%;
+            }
+            span{
+                text-align: center;
+                font-family: $fonte-decorativa;
+                font-size: 85%;       
+                 margin-top: 10px;
+            }
+        }
+    }
+
+    @media only screen and (max-width:768px){
+        #areaPesquisa{
+             #campoPesquisar{
+                 width: 80%;
+            }
+        }
+
+        #areaResultados{
+            .serie{
+                display: block;
+                width: 100%;
+            }
+        }
+
+
+    }
