@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import logo from "../img/logo.png";
 import imgdefault from "../img/imgDefault.png";
+import {Link} from 'react-router-dom';
 
 import Header from "../components/Header";
 import ReactLoading from "react-loading";
@@ -49,6 +50,9 @@ export default class Pesquisar extends Component {
     render() {
 
         const { series, textoPesquisa } = this.state;
+        console.log(series);
+
+
         const listaSeries = series.map(serie => {
             let imagem = imgdefault;
             if (serie.show.image && serie.show.image.medium) {
@@ -56,10 +60,25 @@ export default class Pesquisar extends Component {
             }
             return (
                 <div key={serie.show.id} className="serie">
-                    <img
-                        src={imagem}
-                        alt="Cartaz da série" />
-                    <span>{serie.show.name}</span>
+                    <Link to={
+                        {
+                            pathname:'/serie',
+                            state:{serie, imagem}
+                        }
+                    }>
+                        <img
+                            src={imagem}
+                            alt="Cartaz da série" />
+                    </Link>
+
+                    <Link to={
+                        {
+                            pathname:'/serie',
+                            state:{serie}
+                        }
+                    }>
+                        <span>{serie.show.name}</span>
+                    </Link>
                 </div>
             )
         });
@@ -99,7 +118,7 @@ export default class Pesquisar extends Component {
                     {
                         (naoTemResultadoParaExibir
                             && usuarioEstaPesquisando) &&
-                        <span>Nenhuma série encontrada</span>
+                        <span id="mensagemNaoEncontrado">Nenhuma série encontrada</span>
                     }
                     {listaSeries}
                 </div>
