@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
+import ReactLoading from 'react-loading';
+import { Link } from 'react-router-dom';
 
-import logo from "../img/logo.png";
-import imgdefault from "../img/imgDefault.png";
-import {Link} from 'react-router-dom';
-
-import Header from "../components/Header";
-import ReactLoading from "react-loading";
-import SerieService from "../services/SeriesService";
+import logo from '../img/logo.png';
+import imgDefault from '../img/imgDefault.png';
+import Header from '../components/Header';
+import SeriesService from '../services/SeriesService';
 import './Pesquisar.scss';
 
 export default class Pesquisar extends Component {
@@ -17,11 +16,12 @@ export default class Pesquisar extends Component {
         this.state = {
             series: [],
             carregando: false,
-            textoPesquisa: ""
+            textoPesquisa: ''
         }
-        this.service = new SerieService();
+
+        this.service = new SeriesService();
     }
-    //funçao para pesquisar quando for digitando o nome
+
     pesquisar = event => {
         const consulta = event.target.value;
         /**
@@ -48,22 +48,20 @@ export default class Pesquisar extends Component {
     }
 
     render() {
-
         const { series, textoPesquisa } = this.state;
-        console.log(series);
-
 
         const listaSeries = series.map(serie => {
-            let imagem = imgdefault;
+            let imagem = imgDefault;
             if (serie.show.image && serie.show.image.medium) {
                 imagem = serie.show.image.medium;
             }
+
             return (
                 <div key={serie.show.id} className="serie">
                     <Link to={
                         {
-                            pathname:'/serie',
-                            state:{serie, imagem}
+                            pathname: '/serie',
+                            state: { serie, imagem }
                         }
                     }>
                         <img
@@ -73,8 +71,8 @@ export default class Pesquisar extends Component {
 
                     <Link to={
                         {
-                            pathname:'/serie',
-                            state:{serie}
+                            pathname: '/serie',
+                            state: { serie }
                         }
                     }>
                         <span>{serie.show.name}</span>
@@ -103,17 +101,19 @@ export default class Pesquisar extends Component {
                         placeholder="Digite o nome da série"
                         type="text" />
                 </div>
+
                 {
                     this.state.carregando &&
-                    <div id="areaLoaging">
+                    <div id="areaLoading">
                         <ReactLoading
                             id="animacao"
                             type="bars"
-                            color="red"
+                            color="#00b5cc"
                             height="60px"
                             width="60px" />
                     </div>
                 }
+
                 <div id="areaResultados">
                     {
                         (naoTemResultadoParaExibir

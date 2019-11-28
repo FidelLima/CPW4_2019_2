@@ -1,66 +1,84 @@
 import React, { Component } from 'react';
 
-import logo from "../img/paginaAnterior.png";
-
-import Header from "../components/Header";
+import logo from '../img/paginaAnterior.png';
+import Header from '../components/Header';
 import './VisualizarSerie.scss';
 
 export default class VisualizarSerie extends Component {
-
     render() {
+
         const { serie, imagem } = this.props.location.state;
         const dados = serie.show;
         console.log(dados);
 
         let generos = dados.genres[0];
         const quantidadeGeneros = dados.genres.length;
-        if (quantidadeGeneros.length > 1) {
+        if (quantidadeGeneros > 1) {
             for (let i = 1; i < quantidadeGeneros; i++) {
-                generos += `,${dados.genres[i]}`;
+                generos += `, ${dados.genres[i]}`;
             }
+        } else {
+            generos = 'Não informado';
         }
 
         const titulo = dados.name;
-        const lingua = dados.language;
+        const lingua = dados.language
+            ? dados.language
+            : 'Não informada';
 
-        /*let canalTV=";
-        if(dados.network){
-            canalTV=dados.network.name;
-        } */
-        const canalTV = dados.network ? dados.network.name : ""; // : é o else         
-        const canalWeb = dados.webChannel ? dados.webChannel.name : "";
+        /*let canalTV = '';
+        if (dados.network) {
+            canalTV = dados.network.name;
+        }*/
+        const canalTV = dados.network
+            ? dados.network.name
+            : '';
+        const canalWeb = dados.webChannel
+            ? dados.webChannel.name
+            : '';
         const { status } = dados;
 
-        const regex= /(<([^>]+)>)/ig;
+        /**
+         * Expressão regular para 
+         * remover tags da string
+         */
+        const regex = /(<([^>]+)>)/ig;
+        const sinopse = dados.summary
+            ? dados.summary.replace(regex, '')
+            : 'Não informada';
 
-        const sinopse = dados.summary.replace(regex,'');
+
 
         return (
             <div>
                 <Header
                     enderecoPaginaAnterior="/"
                     logo={logo}
-                    titulo="Visualizar Série" />
+                    titulo="Visualizar série" />
 
                 <div id="areaCartaz">
                     <img src={imagem} alt="Cartaz" />
                 </div>
 
-                <div id="areaDadosSerie" >
+                <div id="areaDadosSerie">
                     <h2>{titulo}</h2>
 
                     <span className="nomeCampo">Gênero:</span>
-                    <span id="generos">{generos}</span>
+                    <span>{generos}</span>
+
+                    <br />
 
                     <span className="nomeCampo">Língua:</span>
-                    <span id="lingua">Língua{lingua}</span>
+                    <span>{lingua}</span>
 
+                    <br />
 
                     {
                         canalTV &&
                         <div>
-                            <span id="canalTV"></span>
                             <span className="nomeCampo">Canal de TV:</span>
+                            <span>{canalTV}</span>
+                            <br />
                         </div>
                     }
 
@@ -68,17 +86,18 @@ export default class VisualizarSerie extends Component {
                         canalWeb &&
                         <div>
                             <span className="nomeCampo">Streaming:</span>
-                            <span id="canalWeb"></span>
+                            <span>{canalWeb}</span>
+                            <br />
                         </div>
                     }
+
                     <span className="nomeCampo">Status:</span>
-                    <span id="status">{status}</span>
+                    <span>{status}</span>
+                    <br />
 
                     <span className="nomeCampo">Sinopse:</span>
                     <div id="sinopse">{sinopse}</div>
                 </div>
-
-
             </div>
         )
     }
